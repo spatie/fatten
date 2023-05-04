@@ -44,7 +44,7 @@ const flatObject = {
     c: 8
 };
 
-const nestedObject = fatten(flatObject, '_');
+const nestedObject = fatten(flatObject, { separator: '_' });
 /*
     {
         a: {
