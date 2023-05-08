@@ -5,10 +5,17 @@
 [![Downloads][downloads-img]][downloads-url]
 [![Issues][issues-img]][issues-url]
 [![Code Coverage][codecov-img]][codecov-url]
-[![Commitizen Friendly][commitizen-img]][commitizen-url]
-[![Semantic Release][semantic-release-img]][semantic-release-url]
 
-Transform dot-notation-like objects into optimised nested objects.
+```ts
+// Fatten turns flat objects
+const 😡 = { id: 5, user_id: 14, user_name: 'Jane', payment_provider: 'stripe' };
+
+// Into optimised nested objects
+const 😍 = { id: 5, user: { id: 14, name: 'Jane' }, paymentProvider: 'stripe' };
+
+// By doing this
+const 🤯 = fatten(😡, { separator: '_' });
+```
 
 ## Support us
 
@@ -104,7 +111,3 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [issues-url]:https://github.com/spatie/fatten/issues
 [codecov-img]:https://codecov.io/gh/spatie/fatten/branch/main/graph/badge.svg
 [codecov-url]:https://codecov.io/gh/spatie/fatten
-[semantic-release-img]:https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
-[semantic-release-url]:https://github.com/semantic-release/semantic-release
-[commitizen-img]:https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
-[commitizen-url]:http://commitizen.github.io/cz-cli/
