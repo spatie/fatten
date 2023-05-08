@@ -33,32 +33,37 @@ yarn add fatten
 ```ts
 import { fatten } from 'fatten';
 
-const flatObject = {
-    a_b_c: 1,
-    a_b_d: 2,
-    a_b_e: 3,
-    a_f: 4,
-    b_c_d_e: 5,
-    b_f_d_e: 6,
-    b_f_d_f: 7,
-    c: 8
+const options = {
+  separator: '-',
+  leafKey: 'value'
 };
-
-const nestedObject = fatten(flatObject, { separator: '_' });
-/*
-    {
-        a: {
-            b: { c: 1, d: 2, e: 3 },
-            f: 4
-        },
-        b: {
-            cDE: 5 },
-            fD: { e: 6, f: 7 }
-        },
-        c: 8
-    }
-*/
+const nestedObject = fatten(flatObject, options);
 ```
+### Options (optional)
+#### `separator` (default: `'.'`)
+The character used to split the keys of the flat object. 
+
+#### `leafKey` (default: `'_'`)
+The key that represents a node with a value inside a deeper path.
+
+> Example: 
+> ```ts
+> const result = fatten({
+>   id: 5,
+>   'id.version': '2',
+>   type: 'mailable'
+> })
+> 
+> // is the same as
+> const result = {
+>   id: {
+>     _: 5,
+>     version: '2'
+>   },
+>   type: 'mailable'
+> }
+>
+> ```
 
 ## Changelog
 
